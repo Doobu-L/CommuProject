@@ -1,0 +1,18 @@
+commu:
+  api: /
+  version: '@project.version@'
+  url: http://localhost:18080
+#  kingcrab:
+#    api-url: http://10.27.10.10:1541
+#    base-path: /kingcrab
+  token:
+    typ: JWT
+    alg: HS256
+    secretkey: 47gfaq6HBRAZdhufdsNKU2sMLzyH8m7j
+    #encryptkey = jwt 서명에서 사용하는 secretkey
+    encryptkey: RuVdCXLUckG2ck4fk4sNS3nWtgaLYXhn
+  slack:
+    key: 'TKABXTJ3Z/BPHM5J5DM/WuMqtfHRKyZkZ196pQtHHOAT'
+    channel: '#c-jini'
+  image:
+    upload-path: C:/befit_images
