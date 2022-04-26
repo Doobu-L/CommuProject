@@ -13,6 +13,11 @@ Sprint 1# BoardCRUD + Login 구현
 clear
 
 # 2. swagger-ui setting
+* spring boot stater 2.6 이상 버전은 ControllerHandler에 매칭시키기 위한 전략의 기본 값 spring.mvc.pathmatch.matching-strategy 기본 값이 ant_path_matcher 에서 path_pattern_parser 로 변경됨.
+그래서 디폴트경로를 다시 잡아줘야 작동. ( -> ant_path_matcher)
+
+참고 : https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.6-Release-Notes#pathpattern-based-path-matching-strategy-for-spring-mvc
+
 
 # 3. Board api 구현 (CRUD)
 
