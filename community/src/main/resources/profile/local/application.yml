@@ -21,31 +21,14 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        #hbm2ddl.auto: update
+        hbm2ddl.auto: update
         implicit_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
         physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
     open-in-view: false
     show-sql: true
-  data:
-    web:
-      pageable:
-        default-page-size: 5
-        one-indexed-parameters: true
   mvc:
-    static-path-pattern: /static/**
-  thymeleaf:
-    mode: HTML
-    encoding: UTF-8
-    check-template-location: true
-    prefix: classpath:/templates/
-    suffix: .html
-    cache: false
-  web:
-    resources:
-      static-locations:
-        - classpath:/static/
-      cache:
-        period: 0
+    pathmatch:
+      matching-strategy: ant_path_matcher
 server:
   port: 18080
 logging:
@@ -57,28 +40,15 @@ logging:
     #max-history: 30
     #path: logs/
     #name: logs/test.%d{yyyy-MM-dd}.log
-  pattern:
-   console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(${LOG_LEVEL_PATTERN:-%5p}){green} %clr([%22thread]){magenta} %clr(%-40.40logger{39}){cyan} %clr(: %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}){faint}'
+#  pattern:
+#   console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(${LOG_LEVEL_PATTERN:-%5p}){green} %clr([%22thread]){magenta} %clr(%-40.40logger{39}){cyan} %clr(: %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}){faint}'
    #rolling-file-name: logs/test.%d{yyyy-MM-dd}-%i.log
   level:
     web: debug
     org.hibernate.SQL: debug
     org.springframework.web.filter: debug
 springdoc:
-  api-docs:
-    path: /api-docs
-  default-consumes-media-type: application/json
-  default-produces-media-type: application/json
   swagger-ui:
-    operations-sorter: alpha
-    tags-sorter: alpha
-    disable-swagger-default-url: true
-    oauth2-redirect-url: /oauth2-redirect.html
-    oauth:
-      app-name: commu-api
-      #client-id:
-      #client-secret:
-      use-pkce-with-authorization-code-grant: true
-      use-basic-authentication-with-access-code-grant: true
+    path: /swagger-ui.html
   paths-to-match:
   - /**
