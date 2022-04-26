@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class CommunityApplicationTests {
 
 	static {
-		System.setProperty("spring.config.location", "classpath:/application.yml,classpath:/befit.yml");
+		System.setProperty("spring.config.location", "classpath:/application.yml,classpath:/commu.yml");
 	}
 
 	@Test

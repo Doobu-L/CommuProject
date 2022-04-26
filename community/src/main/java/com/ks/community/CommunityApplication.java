@@ -9,7 +9,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class CommunityApplication extends SpringBootServletInitializer {
 
 	static {
-		System.setProperty("spring.config.location", "classpath:/application.yml,classpath:/befit.yml");
+		System.setProperty("spring.config.location", "classpath:/application.yml,classpath:/commu.yml");
 	}
 
 	public static void main(String[] args) {
