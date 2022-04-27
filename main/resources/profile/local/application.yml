@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: commu-api
+  profiles:
+    active: local
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    #url: "jdbc:mysql://localhost:3306/community"
+    url: "jdbc:mysql://localhost:3306/befit-commu"
+    #url: "jdbc:mariadb://172.16.100.11:3306/befitcommu?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&tinyInt1isBit=false&allowPublicKeyRetrieval=true&useSSL=false"
+    username: test
+    password: test
+    hikari:
+      auto-commit: false
+      connection-test-query: SELECT 1
+      minimum-idle: 10
+      maximum-pool-size: 50
+      transaction-isolation: TRANSACTION_READ_UNCOMMITTED
+      pool-name: pool-commu-api
+  jpa:
+    database-platform: org.hibernate.dialect.MariaDB103Dialect
+    properties:
+      hibernate:
+        format_sql: true
+        hbm2ddl.auto: update
+        implicit_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+        physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    open-in-view: false
+    show-sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+server:
+  port: 18080
+logging:
+  exception-conversion-word: '%wEx'
+  #file:
+    #최대용량
+    #max-size: 100MB
+    #보관기간
+    #max-history: 30
+    #path: logs/
+    #name: logs/test.%d{yyyy-MM-dd}.log
+#  pattern:
+#   console: '%d{yyyy-MM-dd HH:mm:ss.SSS} %clr(${LOG_LEVEL_PATTERN:-%5p}){green} %clr([%22thread]){magenta} %clr(%-40.40logger{39}){cyan} %clr(: %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}){faint}'
+   #rolling-file-name: logs/test.%d{yyyy-MM-dd}-%i.log
+  level:
+    web: debug
+    org.hibernate.SQL: debug
+    org.springframework.web.filter: debug
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  paths-to-match:
+  - /**
