@@ -1,4 +1,4 @@
-package com.ks.community.Entity;
+package com.ks.community.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @MappedSuperclass
-public abstract class Base implements Serializable {
+public abstract class BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 3490560350813895125L;
 
@@ -35,6 +35,7 @@ public abstract class Base implements Serializable {
     @PrePersist
     protected void onCreate() {
         this.createTimestamp = Timestamp.valueOf(LocalDateTime.now());
+        this.delYn = "N";
     }
 
     @PreUpdate
