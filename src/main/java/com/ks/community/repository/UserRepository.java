@@ -1,8 +1,16 @@
 package com.ks.community.repository;
 
 import com.ks.community.entity.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import com.ks.community.repository.jpainterface.UserInterface;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends JpaRepository<User,Long> {
+@RequiredArgsConstructor
+@Repository
+public class UserRepository {
+  private final UserInterface userInterface;
 
+  public User insert(User user){
+    return userInterface.save(user);
+  }
 }
