@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,8 +30,9 @@ public class UserController {
           @ApiResponse(responseCode = "400", description = "추가 에러", content = @Content(schema = @Schema(implementation = BaseResponse.class)))
       })
   @PostMapping("/new")
-  public BaseResponse newUser(@RequestBody UserDto res){
-    return userService.newUser(res);
+  public ResponseEntity newUser(@RequestBody UserDto req){
+    UserDto res =userService.newUser(req);
+    return res != null ? ResponseEntity.ok().build() : ResponseEntity.badRequest().build();
   }
 
 }
