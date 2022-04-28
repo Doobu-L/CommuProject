@@ -1,5 +1,6 @@
-package com.ks.community.Entity;
+package com.ks.community.entity;
 
+import com.ks.community.dto.UserDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +12,7 @@ import javax.persistence.Entity;
 @Setter
 @NoArgsConstructor
 @Entity
-public class User extends Base{
+public class User extends BaseEntity {
 
     @Column
     private String userId;
@@ -22,4 +23,9 @@ public class User extends Base{
     @Column
     private String nickName;
 
+    public User(UserDto dto){
+        this.userId = dto.getUserId();
+        this.password = dto.getPassword();
+        this.nickName = dto.getNickname();
+    }
 }
