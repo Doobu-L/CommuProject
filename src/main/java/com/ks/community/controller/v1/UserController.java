@@ -1,12 +1,8 @@
 package com.ks.community.controller.v1;
 
 import com.ks.community.dto.UserDto;
-import com.ks.community.response.BaseResponse;
 import com.ks.community.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
