@@ -1,4 +1,4 @@
-package com.ks.community.Entity;
+package com.ks.community.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
@@ -6,13 +6,12 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @MappedSuperclass
-public abstract class Base implements Serializable {
+public abstract class BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 3490560350813895125L;
 
@@ -26,19 +25,20 @@ public abstract class Base implements Serializable {
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     @Column(name ="create_timestamp")
-    private Timestamp createTimestamp;
+    private LocalDateTime createTimestamp;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     @Column(name="update_timestamp")
-    private Timestamp updateTimestamp;
+    private LocalDateTime updateTimestamp;
 
     @PrePersist
     protected void onCreate() {
-        this.createTimestamp = Timestamp.valueOf(LocalDateTime.now());
+        this.createTimestamp = LocalDateTime.now();
+        this.delYn = "N";
     }
 
     @PreUpdate
     protected void onUpdate() {
-        this.updateTimestamp = Timestamp.valueOf(LocalDateTime.now());
+        this.updateTimestamp = LocalDateTime.now();
     }
 }
