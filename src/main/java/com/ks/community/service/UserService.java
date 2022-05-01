@@ -21,4 +21,9 @@ public class UserService {
   }
 
 
+  public UserDto getUserById(long id) {
+    //Todo Custom ExceptionHandle
+    UserDto user = userRepository.getUserById(id).map(UserDto::new).orElseThrow(RuntimeException::new);
+    return user;
+  }
 }

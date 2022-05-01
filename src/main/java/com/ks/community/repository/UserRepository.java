@@ -5,6 +5,8 @@ import com.ks.community.repository.jpainterface.UserInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Repository
 public class UserRepository {
@@ -12,5 +14,9 @@ public class UserRepository {
 
   public User insert(User user){
     return userInterface.save(user);
+  }
+
+  public Optional<User> getUserById(long id) {
+    return userInterface.findById(id);
   }
 }

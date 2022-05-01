@@ -8,13 +8,9 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -24,15 +20,17 @@ public class UserController {
 
   private final UserService userService;
 
-  @Operation(summary = "회원가입", description = "",
-      responses = {
-          @ApiResponse(responseCode = "200", description = "추가 성공", content = @Content(schema = @Schema(implementation = BaseResponse.class))),
-          @ApiResponse(responseCode = "400", description = "추가 에러", content = @Content(schema = @Schema(implementation = BaseResponse.class)))
-      })
+  @Operation(summary = "회원가입", description = "")
   @PostMapping("/new")
   public ResponseEntity newUser(@RequestBody UserDto req){
     UserDto res =userService.newUser(req);
     return res != null ? ResponseEntity.ok().build() : ResponseEntity.badRequest().build();
   }
 
+  @Operation(summary = "id로 회원 조회", description = "")
+  @PostMapping("/{id}")
+  public ResponseEntity newUser(@PathVariable long id){
+    UserDto res =userService.getUserById(id);
+    return ResponseEntity.ok().build();
+  }
 }
