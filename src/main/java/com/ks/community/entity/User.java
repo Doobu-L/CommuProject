@@ -1,4 +1,4 @@
-package com.ks.community.Entity;
+package com.ks.community.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
