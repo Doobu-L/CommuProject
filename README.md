@@ -17,6 +17,7 @@ clear
 그래서 디폴트경로를 다시 잡아줘야 작동. ( -> ant_path_matcher)
 
 참고 : https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.6-Release-Notes#pathpattern-based-path-matching-strategy-for-spring-mvc
+![image](https://user-images.githubusercontent.com/60733417/166150709-09c5c2a7-b36d-4289-a7fe-36ba628afcb3.png)
 
 
 # 3. Board api 구현 (CRUD)
