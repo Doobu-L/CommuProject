@@ -16,7 +16,7 @@ public class UserController {
 
   private final UserService userService;
 
-  @Operation(summary = "회원가입", description = "")
+  @Operation(summary = "회원 가입", description = "")
   @PostMapping("/new")
   public ResponseEntity newUser(@RequestBody UserDto req){
     UserDto res =userService.newUser(req);
@@ -25,8 +25,17 @@ public class UserController {
 
   @Operation(summary = "id로 회원 조회", description = "")
   @PostMapping("/{id}")
-  public ResponseEntity newUser(@PathVariable long id){
+  public ResponseEntity getUserById(@PathVariable long id){
     UserDto res =userService.getUserById(id);
-    return ResponseEntity.ok().build();
+    return ResponseEntity.ok().body(res);
   }
+
+  @Operation(summary = "회원 수정", description = "")
+  @PutMapping("/{id}")
+  public ResponseEntity updateUser(@PathVariable long id,@RequestBody UserDto req) throws Exception{
+    boolean res = userService.updateUser(id,req);
+    return ResponseEntity.ok().body(res);
+  }
+
+
 }
