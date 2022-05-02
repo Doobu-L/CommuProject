@@ -19,8 +19,11 @@ clear
 참고 : https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.6-Release-Notes#pathpattern-based-path-matching-strategy-for-spring-mvc
 ![image](https://user-images.githubusercontent.com/60733417/166150709-09c5c2a7-b36d-4289-a7fe-36ba628afcb3.png)
 
+인증/인가 권한
+비회원 : 피드리스트조회, 피드조회,회원가입
+회원 : 피드추가,피드수정,피드삭제, 회원정보변경, 회원조회
 
-# 3. Board api 구현 (CRUD)
+# 3. Feed api 구현 (CRUD)
 
 # 4. User api 구현 (CRUD)
 
