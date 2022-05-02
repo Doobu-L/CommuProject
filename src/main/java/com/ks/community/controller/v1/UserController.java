@@ -26,7 +26,7 @@ public class UserController {
   @Operation(summary = "id로 회원 조회", description = "")
   @PostMapping("/{id}")
   public ResponseEntity getUserById(@PathVariable long id){
-    UserDto res =userService.getUserById(id);
+    UserDto res =new UserDto(userService.getUserById(id));
     return ResponseEntity.ok().body(res);
   }
 

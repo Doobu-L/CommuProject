@@ -22,9 +22,9 @@ public class UserService {
 
 
   @Transactional
-  public UserDto getUserById(long id) {
+  public User getUserById(long id) {
     //Todo Custom ExceptionHandle
-    UserDto user = userRepository.getUserById(id).map(UserDto::new).orElseThrow(RuntimeException::new);
+    User user = userRepository.getUserById(id).orElseThrow(RuntimeException::new);
     return user;
   }
 
