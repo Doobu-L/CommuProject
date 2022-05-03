@@ -5,8 +5,7 @@ import com.ks.community.entity.Feed;
 import com.ks.community.entity.User;
 import com.ks.community.repository.jpainterface.FeedInterface;
 import com.ks.community.repository.jpainterface.UserInterface;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,8 +28,11 @@ public class FeedRepository {
     return feed;
   }
 
-  public List<FeedDto> getFeedList(Pageable pageable) {
-    return feedInterface.findAll(pageable).stream().map(FeedDto::new).collect(Collectors.toList());
+  public Page<Feed> getFeedList(Pageable pageable) {
+    return feedInterface.findAll(pageable);
   }
 
+  public Optional<Feed> getFeedById(long id){
+    return feedInterface.findById(id);
+  }
 }

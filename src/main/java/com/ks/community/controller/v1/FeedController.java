@@ -5,6 +5,7 @@ import com.ks.community.service.FeedService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
@@ -34,6 +35,12 @@ public class FeedController {
   @GetMapping("")
   public ResponseEntity getFeedList(@PageableDefault(sort = "createTimestamp",direction = Direction.DESC) Pageable pageable){
     return ResponseEntity.ok().body(feedService.getFeedList(pageable));
+  }
+
+  @Operation(summary = "피드 조회", description = "")
+  @GetMapping("/{id}")
+  public ResponseEntity getFeed(@PathVariable long id) throws NotFoundException {
+    return ResponseEntity.ok().body(feedService.getFeed(id));
   }
 
 
