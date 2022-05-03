@@ -9,6 +9,8 @@ import lombok.ToString;
 @NoArgsConstructor
 public class FeedDto extends BaseEntityDto {
 
+  private UserDto user;
+
   private String title;
   private String content;
 
@@ -19,6 +21,8 @@ public class FeedDto extends BaseEntityDto {
     this.createTimestamp = feed.getCreateTimestamp();
     this.title = feed.getTitle();
     this.content = feed.getContent();
+    if(feed.getUser()!=null)
+      this.user = new UserDto(feed.getUser());
   }
 
 }
