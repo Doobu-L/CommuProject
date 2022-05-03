@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +42,13 @@ public class FeedController {
   @GetMapping("/{id}")
   public ResponseEntity getFeed(@PathVariable long id) throws NotFoundException {
     return ResponseEntity.ok().body(feedService.getFeed(id));
+  }
+
+  @Operation(summary = "피드 수정", description = "")
+  @PutMapping("/{id}")
+  public ResponseEntity updateFeed(@PathVariable long id,@RequestBody FeedDto req)
+      throws Exception {
+    return ResponseEntity.ok().body(feedService.updateFeed(req,id));
   }
 
 
