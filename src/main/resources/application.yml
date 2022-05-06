@@ -32,8 +32,17 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 831370842286-b9n9og52b198dsr6rlc6ttp1j75kjta3.apps.googleusercontent.com
+            client-secret: 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
+            redirect_uri: http://localhost:28080/login/oauth/google
+            #scope: # 필요한 권한 #
 server:
-  port: 18080
+  port: 28080
 logging:
   exception-conversion-word: '%wEx'
     #file:
