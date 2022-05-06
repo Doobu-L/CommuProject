@@ -7,11 +7,11 @@ spring:
     use-legacy-processing: true # for using legacy processing on spring boot version up to 2.4
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/community"
+    url: "jdbc:mysql://localhost:3306/community?serverTimezone=UTC&characterEncoding=UTF-8&useSSL=false"
     #url: "jdbc:mysql://localhost:3306/befit-commu"
     #url: "jdbc:mariadb://172.16.100.11:3306/befitcommu?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&tinyInt1isBit=false&allowPublicKeyRetrieval=true&useSSL=false"
-    username: root
-    password: root
+    username: test
+    password: test
     hikari:
       auto-commit: false
       connection-test-query: SELECT 1
@@ -24,7 +24,7 @@ spring:
     properties:
       hibernate:
         format_sql: true
-        hbm2ddl.auto: update
+        #hbm2ddl.auto: update
         implicit_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
         physical_naming_strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
     open-in-view: false
