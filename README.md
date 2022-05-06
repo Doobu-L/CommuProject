@@ -29,4 +29,5 @@ clear
 
 # 5. 인증/인가 구현(Filter로 할지 시큐리티 적용할지 firebase?)
 filter는 해봤으니 일단 OAuth2 로 구현 해보고, firebase 도 써보도록하자.
-OAuth2 는 GCP로
+OAuth2 는 GCP로 ... 구글 로그인폼 띄우고 로그인 후 리다이렉트까지 성공.
+
