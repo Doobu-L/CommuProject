@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Repository
-public class UserRepository {
+public class UserRepository  {
   private final UserInterface userInterface;
 
   public User insert(User user){
@@ -18,5 +18,13 @@ public class UserRepository {
 
   public Optional<User> getUserById(long id) {
     return userInterface.findById(id);
+  }
+
+  public Optional<User> findByEmail(String email){
+    return userInterface.findByEmail(email);
+  }
+
+  public User save(User user) {
+    return userInterface.save(user);
   }
 }

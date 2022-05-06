@@ -2,15 +2,18 @@ package com.ks.community.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ks.community.dto.UserDto;
+import com.ks.community.enumtype.Role;
 import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
 
 @Getter
 @Setter
@@ -22,10 +25,20 @@ public class User extends BaseEntity {
     private String userId;
 
     @Column
+    private String username;
+
+    @Column
+    private String email;
+
+    @Column
     private String password;
 
     @Column
-    private String nickName;
+    private String nickname;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private Role role;
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
     @JsonIgnore
@@ -34,6 +47,25 @@ public class User extends BaseEntity {
     public User(UserDto dto){
         this.userId = dto.getUserId();
         this.password = dto.getPassword();
-        this.nickName = dto.getNickname();
+        this.nickname = dto.getNickname();
+    }
+
+    public String getRoleValue(){
+        return this.role.getValue();
+    };
+
+    public User updateModifiedDate() {
+        this.onUpdate();
+        return this;
+    }
+
+    @Builder
+    public User(String userId,String username,String email,String password,String nickname,Role role){
+        this.userId = userId;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.nickname = nickname;
+        this.role = role;
     }
 }
