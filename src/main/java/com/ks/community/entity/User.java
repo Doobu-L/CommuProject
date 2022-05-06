@@ -2,7 +2,10 @@ package com.ks.community.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ks.community.dto.UserDto;
+import com.ks.community.enumtype.Role;
 import java.util.List;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import lombok.Getter;
@@ -26,6 +29,10 @@ public class User extends BaseEntity {
 
     @Column
     private String nickName;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private Role role;
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
     @JsonIgnore
