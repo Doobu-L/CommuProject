@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "Feed", description = "피드관리 API")
-@RequestMapping("/feed")
+@RequestMapping("/api/feed")
 public class FeedController {
   private final FeedService feedService;
 

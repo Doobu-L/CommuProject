@@ -32,7 +32,7 @@ public class UserService {
   public boolean updateUser(long id, UserDto req) throws Exception {
     User user = userRepository.getUserById(id).orElseThrow(NotFoundException::new);
 
-    if(StringUtils.isNotBlank(req.getNickname()))user.setNickName(req.getNickname());
+    if(StringUtils.isNotBlank(req.getNickname()))user.setNickname(req.getNickname());
     if(StringUtils.isNotBlank(req.getPassword()))user.setPassword(req.getPassword());
     return true;
   }
