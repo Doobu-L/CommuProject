@@ -2,6 +2,7 @@ package com.ks.community.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ks.community.dto.UserDto;
+import com.ks.community.enumtype.OAuthType;
 import com.ks.community.enumtype.Role;
 import java.util.List;
 import javax.persistence.Column;
@@ -39,6 +40,10 @@ public class User extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column
     private Role role;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    private OAuthType oauthType;
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
     @JsonIgnore
