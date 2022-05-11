@@ -7,17 +7,20 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
+@Setter
 public class OAuthAttributes {
   private Map<String, Object> attributes;
   private String nameAttributeKey;
   private String username;
   private String nickname;
   private String email;
+  private String code;
   private Role role;
   public static OAuthAttributes of(String registrationId,
       String userNameAttributeName,
@@ -31,6 +34,7 @@ public class OAuthAttributes {
         .username((String) attributes.get("email"))
         .email((String) attributes.get("email"))
         .nickname((String) attributes.get("name"))
+        .code((String)attributes.get("code"))
         .attributes(attributes)
         .nameAttributeKey(userNameAttributeName)
         .build();
