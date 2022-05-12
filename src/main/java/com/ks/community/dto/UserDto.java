@@ -13,12 +13,14 @@ public class UserDto {
   private String userId;
   private String password;
   private String nickname;
+  private String username;
 
   public UserDto(User user){
     this.id = user.getId();
     this.userId = user.getUserId();
     this.password = user.getPassword();
     this.nickname = user.getNickname();
+    this.username = user.getUsername();
 
   }
 }
