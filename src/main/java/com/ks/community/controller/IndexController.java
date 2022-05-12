@@ -1,5 +1,6 @@
 package com.ks.community.controller;
 
+import com.ks.community.dto.UserDto;
 import com.ks.community.entity.User;
 import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +19,7 @@ public class IndexController {
 
   @GetMapping("/")
   public String index(Model model){
-    User user = (User) httpSession.getAttribute("user");
+    UserDto user = (UserDto) httpSession.getAttribute("user");
 
     if(user!=null)
       model.addAttribute("userName",user.getUsername());
