@@ -1,6 +1,7 @@
 package com.ks.community.dto;
 
 import com.ks.community.entity.User;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -21,6 +22,13 @@ public class UserDto {
     this.password = user.getPassword();
     this.nickname = user.getNickname();
     this.username = user.getUsername();
+  }
 
+  @Builder
+  public UserDto(String userId,String password, String nickname, String username){
+    this.userId = userId;
+    this.password = password;
+    this.nickname = nickname;
+    this.username = username;
   }
 }
