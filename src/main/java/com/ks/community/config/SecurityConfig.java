@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @RequiredArgsConstructor
@@ -49,15 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .csrf().ignoringAntMatchers("/api/**") /* REST API 사용 예외처리 */
         .and()
         .authorizeRequests()
-        .antMatchers("/index", "/login/**").permitAll()
+        .antMatchers("/").permitAll()
         .anyRequest().authenticated()
         .and()
-        .formLogin()
-        .loginPage("/index")
-        .loginProcessingUrl("/auth/loginProc")
         //.failureHandler(customFailureHandler)
-        .defaultSuccessUrl("/")
-        .and()
         .logout()
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
         .invalidateHttpSession(true).deleteCookies("JSESSIONID")
