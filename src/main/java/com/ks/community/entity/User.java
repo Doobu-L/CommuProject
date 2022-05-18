@@ -50,6 +50,7 @@ public class User extends BaseEntity {
     private List<Feed> feedList;
 
     public User(UserDto dto){
+        this.username = dto.getUsername();
         this.userId = dto.getUserId();
         this.password = dto.getPassword();
         this.nickname = dto.getNickname();
