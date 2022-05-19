@@ -1,6 +1,6 @@
 package com.ks.community.repository;
 
-import com.ks.community.entity.User;
+import com.ks.community.domain.entity.User;
 import com.ks.community.repository.jpainterface.UserInterface;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -14,6 +14,17 @@ public class UserRepository  {
 
   public User insert(User user){
     return userInterface.save(user);
+  }
+
+  public boolean validUser(User user){
+    //아이디 중복
+    if(userInterface.findByUserId(user.getUserId()).isPresent())
+      throw new RuntimeException(); //Todo CustomException Message
+
+    if(userInterface.findByNickname(user.getNickname()).isPresent())
+      throw new RuntimeException();
+
+    return true;
   }
 
   public Optional<User> getUserById(long id) {

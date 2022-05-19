@@ -1,6 +1,6 @@
 package com.ks.community.controller.v1;
 
-import com.ks.community.dto.UserDto;
+import com.ks.community.domain.dto.UserDto;
 import com.ks.community.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,7 +20,7 @@ public class UserController {
   @PostMapping("/new")
   public ResponseEntity newUser(@RequestBody UserDto req){
     UserDto res =userService.newUser(req);
-    return res != null ? ResponseEntity.ok().build() : ResponseEntity.badRequest().build();
+    return ResponseEntity.ok().build();
   }
 
   @Operation(summary = "id로 회원 조회", description = "")

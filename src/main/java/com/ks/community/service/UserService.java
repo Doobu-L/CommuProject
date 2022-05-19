@@ -1,7 +1,7 @@
 package com.ks.community.service;
 
-import com.ks.community.dto.UserDto;
-import com.ks.community.entity.User;
+import com.ks.community.domain.dto.UserDto;
+import com.ks.community.domain.entity.User;
 import com.ks.community.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -16,10 +16,19 @@ public class UserService {
   private final UserRepository userRepository;
 
   @Transactional
-  public UserDto newUser(UserDto user) {
-    return new UserDto(userRepository.insert(new User(user)));
+  public UserDto newUser(UserDto req) {
+    User user = User.builder()
+            .userId(req.getUserId())
+            .password(req.getPassword())
+            .username(req.getUsername())
+            .nickname(req.getNickname()).build();
+    validUser(user);
+    return new UserDto(userRepository.insert(new User(req)));
   }
 
+  private void validUser(User user) {
+    userRepository.validUser(user);
+  }
 
   @Transactional
   public User getUserById(long id) {
