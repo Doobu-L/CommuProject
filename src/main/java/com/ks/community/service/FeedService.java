@@ -1,7 +1,7 @@
 package com.ks.community.service;
 
-import com.ks.community.dto.FeedDto;
-import com.ks.community.entity.Feed;
+import com.ks.community.domain.dto.FeedDto;
+import com.ks.community.domain.entity.Feed;
 import com.ks.community.repository.FeedRepository;
 import java.util.List;
 import java.util.stream.Collectors;

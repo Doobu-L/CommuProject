@@ -1,11 +1,9 @@
 package com.ks.community.service;
 
-import com.ks.community.dto.OAuthAttributes;
-import com.ks.community.dto.UserDto;
-import com.ks.community.entity.User;
+import com.ks.community.domain.dto.OAuthAttributes;
+import com.ks.community.domain.dto.UserDto;
+import com.ks.community.domain.entity.User;
 import com.ks.community.repository.UserRepository;
-import java.util.Collections;
-import javax.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +16,9 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpSession;
+import java.util.Collections;
 
 /**
  * Security UserDetailsService == OAuth OAuth2UserService
