@@ -1,6 +1,6 @@
 package com.ks.community.controller.v1;
 
-import com.ks.community.dto.FeedDto;
+import com.ks.community.domain.dto.FeedDto;
 import com.ks.community.service.FeedService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

@@ -1,8 +1,8 @@
 package com.ks.community.repository;
 
-import com.ks.community.dto.FeedDto;
-import com.ks.community.entity.Feed;
-import com.ks.community.entity.User;
+import com.ks.community.domain.dto.FeedDto;
+import com.ks.community.domain.entity.Feed;
+import com.ks.community.domain.entity.User;
 import com.ks.community.repository.jpainterface.FeedInterface;
 import com.ks.community.repository.jpainterface.UserInterface;
 import java.util.Optional;

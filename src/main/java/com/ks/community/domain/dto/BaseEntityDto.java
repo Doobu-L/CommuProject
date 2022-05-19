@@ -1,4 +1,4 @@
-package com.ks.community.dto;
+package com.ks.community.domain.dto;
 
 import java.time.LocalDateTime;
 import lombok.AccessLevel;

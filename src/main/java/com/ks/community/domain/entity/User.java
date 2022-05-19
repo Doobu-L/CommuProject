@@ -1,16 +1,12 @@
-package com.ks.community.entity;
+package com.ks.community.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.ks.community.dto.UserDto;
+import com.ks.community.domain.dto.UserDto;
 import com.ks.community.enumtype.OAuthType;
 import com.ks.community.enumtype.Role;
 import java.util.List;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -50,6 +46,7 @@ public class User extends BaseEntity {
     private List<Feed> feedList;
 
     public User(UserDto dto){
+        this.username = dto.getUsername();
         this.userId = dto.getUserId();
         this.password = dto.getPassword();
         this.nickname = dto.getNickname();
