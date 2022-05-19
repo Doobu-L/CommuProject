@@ -1,6 +1,6 @@
-package com.ks.community.dto;
+package com.ks.community.domain.dto;
 
-import com.ks.community.entity.User;
+import com.ks.community.domain.entity.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
