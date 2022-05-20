@@ -1,15 +1,13 @@
 package com.ks.community.User;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.ks.community.domain.dto.UserDto;
 import com.ks.community.domain.entity.User;
 import com.ks.community.service.UserService;
-import jdk.nashorn.internal.runtime.logging.Logger;
-import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 public class UserServiceTest {
@@ -17,24 +15,19 @@ public class UserServiceTest {
   @Autowired
   UserService userService;
 
-  private UserDto userA(){
-    return UserDto.builder()
-        .userId("popo123")
-        .username("테스트")
-        .password("암호")
-        .nickname("닉넴")
-        .build();
-  }
+  final UserDto userA =  UserDto.builder()
+                        .userId("popo123")
+                        .username("테스트")
+                        .password("암호")
+                        .nickname("닉넴")
+                        .build();
 
-  private UserDto userB(){
-    return UserDto.builder()
-        .userId("dodo123")
-        .username("테스트2")
-        .password("암호2")
-        .nickname("닉넴2")
-        .build();
-  }
-
+  final UserDto userB = UserDto.builder()
+                        .userId("dodo123")
+                        .username("테스트2")
+                        .password("암호2")
+                        .nickname("닉넴2")
+                        .build();
 
   /**
    *  시나리오
@@ -44,7 +37,6 @@ public class UserServiceTest {
    * */
   @Test
   public void 유저_신규(){
-    UserDto userA = userA();
 
     UserDto userDto = userService.newUser(userA);
 
@@ -65,7 +57,6 @@ public class UserServiceTest {
   @Test
   public void 유저_수정(){
     long id = 3L;
-    UserDto userB = userB();
 
     try {
       userService.updateUser(id, userB);
