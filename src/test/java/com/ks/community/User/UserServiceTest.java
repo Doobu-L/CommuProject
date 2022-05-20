@@ -3,6 +3,7 @@ package com.ks.community.User;
 import com.ks.community.domain.dto.UserDto;
 import com.ks.community.domain.entity.User;
 import com.ks.community.service.UserService;
+import jdk.nashorn.internal.runtime.logging.Logger;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,58 +13,75 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 public class UserServiceTest {
-
+  
   @Autowired
   UserService userService;
 
+  private UserDto userA(){
+    return UserDto.builder()
+        .userId("popo123")
+        .username("테스트")
+        .password("암호")
+        .nickname("닉넴")
+        .build();
+  }
+
+  private UserDto userB(){
+    return UserDto.builder()
+        .userId("dodo123")
+        .username("테스트2")
+        .password("암호2")
+        .nickname("닉넴2")
+        .build();
+  }
+
+
+  /**
+   *  시나리오
+   *  1. check 유저 -> false
+   *  2. 닉네임 유효성검사 -> true
+   *  3. insert
+   * */
   @Test
   public void 유저_신규(){
-    String userId = "poitt";
-    String password = "passw";
-    String nickname = "날룰루";
-    String username = "부우자";
+    UserDto userA = userA();
 
-    UserDto req = UserDto.builder()
-        .userId(userId)
-        .username(username)
-        .password(password)
-        .nickname(nickname)
-        .build();
+    UserDto userDto = userService.newUser(userA);
 
-    UserDto userDto = userService.newUser(req);
-
-    assertThat(userDto.getUserId()).isEqualTo(userId);
-    assertThat(userDto.getPassword()).isEqualTo(password);
-    assertThat(userDto.getNickname()).isEqualTo(nickname);
-    assertThat(userDto.getUsername()).isEqualTo(username);
+    assertThat(userDto.getUserId()).isEqualTo(userA.getUserId());
+    assertThat(userDto.getPassword()).isEqualTo(userA.getPassword());
+    assertThat(userDto.getNickname()).isEqualTo(userA.getNickname());
+    assertThat(userDto.getUsername()).isEqualTo(userA.getUsername());
 
     System.out.printf("User insert Success");
   }
 
+  /**
+   * 시나리오
+   * 1. check 유저 -> true
+   * 2. 수정을 원하는 요청값 유효성검사(nickname validation)
+   * 3. update
+   * */
   @Test
-  public void 유저_수정() throws Exception {
+  public void 유저_수정(){
     long id = 3L;
-    String userId = "poitt";
-    String password = "passw";
-    String nickname = "룰루랄";
-    String username = "부우자";
+    UserDto userB = userB();
 
-    UserDto req = UserDto.builder()
-            .userId(userId)
-            .username(username)
-            .password(password)
-            .nickname(nickname)
-            .build();
+    try {
+      userService.updateUser(id, userB);
+    }catch (Exception e){
+      System.out.printf("유저 업데이트중 에러 발생");
+      e.printStackTrace();
+    }
 
-    userService.updateUser(id, req);
 
     User user = userService.getUserById(id);
 
-    assertThat(user.getNickname()).isEqualTo(nickname);
-    assertThat(user.getUsername()).isEqualTo(username);
+    assertThat(user.getNickname()).isEqualTo(userB.getNickname());
 
     System.out.printf("User update Success");
   }
+
 
 
 
