@@ -37,5 +37,14 @@ public class UserController {
     return ResponseEntity.ok().body(res);
   }
 
+  @Operation(summary = "닉네임 중복체크", description = "")
+  @GetMapping("/nickname")
+  public ResponseEntity checkNickname(@RequestParam String nickname) throws Exception{
+    boolean res = userService.checkNickname(nickname);
+    return ResponseEntity.ok().body(res);
+  }
+
+
+
 
 }
