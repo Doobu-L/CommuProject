@@ -45,4 +45,9 @@ public class UserService {
     if(StringUtils.isNotBlank(req.getPassword()))user.setPassword(req.getPassword());
     return true;
   }
+
+  public boolean checkNickname(String nickname){
+    return userRepository.checkNickname(nickname);
+  }
+
 }

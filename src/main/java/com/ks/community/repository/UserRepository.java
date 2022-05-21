@@ -21,9 +21,6 @@ public class UserRepository  {
     if(userInterface.findByUserId(user.getUserId()).isPresent())
       throw new RuntimeException(); //Todo CustomException Message
 
-    if(userInterface.findByNickname(user.getNickname()).isPresent())
-      throw new RuntimeException();
-
     return true;
   }
 
@@ -37,5 +34,9 @@ public class UserRepository  {
 
   public User save(User user) {
     return userInterface.save(user);
+  }
+
+  public boolean checkNickname(String nickname){
+    return userInterface.findByNickname(nickname).isPresent()?true:false;
   }
 }
