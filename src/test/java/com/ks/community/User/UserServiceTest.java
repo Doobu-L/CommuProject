@@ -32,7 +32,7 @@ public class UserServiceTest {
   /**
    *  시나리오
    *  1. check 유저 -> false
-   *  2. 닉네임 유효성검사 -> true
+   *  2. 닉네임 유효성검사 -> false
    *  3. insert
    * */
   @Test
@@ -51,7 +51,7 @@ public class UserServiceTest {
   /**
    * 시나리오
    * 1. check 유저 -> true
-   * 2. 수정을 원하는 요청값 유효성검사(nickname validation)
+   * 2. 수정을 원하는 요청값 유효성검사(nickname validation) -> false
    * 3. update
    * */
   @Test
@@ -71,6 +71,22 @@ public class UserServiceTest {
     assertThat(user.getNickname()).isEqualTo(userB.getNickname());
 
     System.out.printf("User update Success");
+  }
+
+  @Test
+  public void 닉네임_유효성검사(){
+    //Todo 부적절한 단어 필터링
+    String nickname = "닉넴";
+
+    boolean checkNickname = userService.checkNickname(nickname);
+
+    assertThat(checkNickname).isTrue();
+
+    nickname = "닉네이이임";
+
+    assertThat(checkNickname).isFalse();
+
+    System.out.printf("닉네임 유효성검사 통과");
   }
 
 
